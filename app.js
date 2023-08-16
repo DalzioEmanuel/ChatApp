@@ -21,12 +21,12 @@ const passport = require('passport');
     app.use(passport.session());
     app.use(flash());
 //Middleware
-    app.use((req, res, next)=>{
+    /*app.use((req, res, next)=>{
         res.locals.msg_success = req.flash('msg_success');
         res.locals.msg_error = req.flash('msg_error');
         res.locals.error = req.flash('error');
         res.locals.user = req.user || null;
-    });
+    });*/
 //body-Parser
     app.use(express.urlencoded({extended: true}));
     app.use(express.json());
@@ -39,9 +39,11 @@ const passport = require('passport');
         }
     }));
     app.set('view engine', 'handlebars');
+//Public
+    app.use(express.static(path.join(__dirname, 'public')));
 //Routing
     app.get('/', (req, res)=>{
-        res.send('This is the first Page');
+        res.render('index');
     });
 
 //Others
