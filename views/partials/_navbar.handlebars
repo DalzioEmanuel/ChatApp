@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
-    <a class="navbar-brand" href="/">Blog Do Nodejs</a>
+    <a class="navbar-brand" href="/">Chat Room</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -10,18 +10,18 @@
           <a class="nav-link active" aria-current="page" href="/">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/categorias">Categorias</a>
+          <a class="nav-link" href="/">Participants</a>
         </li>
         {{#if user}}
             <li class="nav-item">
-              <a aria-disabled="true" href="/usuarios/logout">Logout</a>
+              <a aria-disabled="true" class="nav-link" href="/usuarios/logout">Logout</a>
             </li>
         {{else}}
             <li class="nav-item">
-              <a aria-disabled="true" href="/usuarios/login">Login</a>
+              <a aria-disabled="true" class="nav-link" href="/users/login">Sign In</a>
             </li>
             <li class="nav-item">
-              <a href="/usuarios/registro" aria-disabled="true">Registro</a>
+              <a href="/users/register" class="nav-link" aria-disabled="true">Sign Up</a>
             </li>
         {{/if}}
       </ul>
