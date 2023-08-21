@@ -1,12 +1,12 @@
-{{#each erros}}
-    <div class="alert alert-danger">{{texto}}</div>
+{{#each errors}}
+    <div class="alert alert-danger">{{text}}</div>
 {{else}}
 {{/each}}
 
 <h3>Create an account:</h3>
 <div class="card">
     <div class="card-body">
-        <form action="" method="post">
+        <form action="/users/register" method="post">
             <label for="username">Username: </label>
             <input type="text" name="username" id="" class="form-control" required>
             <label for="email">Email: </label>

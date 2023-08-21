@@ -5,11 +5,11 @@
     const mongoose = require('mongoose');
     mongoose.Promise = global.Promise;
     const session = require('express-session');
-    
+    const path = require('path');
+    //Routes
+        const User = require('./routes/user');
     //Connect flash for displaying flash messages to the users
         const flash = require('connect-flash');
-        const path = require('path');
-
     //Passport for the authentication process
         const Passport = require('passport');
         require('./config/auth')(Passport);
@@ -49,13 +49,7 @@
     app.get('/', (req, res)=>{
         res.render('index');
     });
-    app.get('/users/login', (req, res)=>{
-        res.render('users/login');
-    });
-    app.get('/users/register', (req, res)=>{
-        res.render('users/register');
-    });
-
+    app.use('/users', User);
 //Others
     app.set('port', process.env.PORT || 8081);
     app.listen(app.get('port'), ()=> console.log('Server Running'));

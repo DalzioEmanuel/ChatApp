@@ -1,5 +1,5 @@
-{{#each erros}}
-    <div class="alert alert-danger">{{texto}}</div>
+{{#each errors}}
+    <div class="alert alert-danger">{{text}}</div>
 {{else}}
 {{/each}}
 
@@ -7,8 +7,8 @@
 <div class="card">
     <div class="card-body">
         <form action="/users/login" method="post">
-            <label for="email">Email: </label>
-                <input type="email" name="email" id="" class="form-control" required>
+            <label for="email">Username: </label>
+                <input type="text" name="username" id="" class="form-control" required>
             <label for="password">Password: </label>
                 <input type="password" name="password" id="" class="form-control" required><br>
             <button class="btn btn-success" type="submit">Log In</button>

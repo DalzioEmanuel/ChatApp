@@ -3,13 +3,26 @@
         <div class="col-md-8 offset-md-2 mt-5">
             <div class="card">
                 <div class="card-header">
-                    Real-Time Chat App
+                    ChatRoom
                 </div>
                 <div class="card-body" id="chat-messages">
                     {{#if messages}}
-
+                        {{#each messages}}
+                        <div class="card {{#if userMessage}}user-message{{else}}other-message{{/if}} message">
+                            <div class="card-body">
+                                <p>{{username}}</p>
+                                <small>{{message}}</small>
+                            </div>
+                        </div>
+                        {{/each}}
                     {{else}}
-                        <div class="alert alert-danger">No Messages</div>
+                        <div class="card text-center">
+                            <div class="card-body">
+                                <p class="mb-1">No messages</p>
+                                <hr>
+                                <small>Start the conversation by sending a message!</small>
+                            </div>
+                        </div>
                     {{/if}}
                 </div>
                 <div class="card-footer">

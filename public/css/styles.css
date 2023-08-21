@@ -1,0 +1,14 @@
+/* public/css/styles.css */
+.user-message {
+    background-color: #d1ecf1;
+}
+
+.other-message {
+    background-color: #f8f9fa;
+}
+
+.message {
+    margin-bottom: 10px;
+    padding: 5px;
+    border-radius: 5px;
+}
