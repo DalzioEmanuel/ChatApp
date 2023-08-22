@@ -6,6 +6,9 @@
     mongoose.Promise = global.Promise;
     const session = require('express-session');
     const path = require('path');
+    //Messages models
+        require('./models/messages');
+        const Messages = mongoose.model('Message');
     //Routes
         const User = require('./routes/user');
     //Connect flash for displaying flash messages to the users
@@ -13,6 +16,8 @@
     //Passport for the authentication process
         const Passport = require('passport');
         require('./config/auth')(Passport);
+    //Authentication
+        const isAuth = require('./helpers/isAuth');
 
 //Setting the express-session middleware to enable and manage sessions for storing user related information in the sessions.
     app.use(session({
@@ -46,8 +51,18 @@
 //Public
     app.use(express.static(path.join(__dirname, 'public')));
 //Routing
-    app.get('/', (req, res)=>{
-        res.render('index');
+    app.get('/', isAuth, async (req, res)=>{
+        try {
+            const currentUser = res.locals.user;
+            const messages = await Messages.find();
+
+            console.log(messages)
+            res.render('index', {messages: messages, user: currentUser});
+        } catch (error) {
+            req.flash('msg_error', 'Theres was an error.');
+            res.redirect('/');
+        }
+        
     });
     app.use('/users', User);
 //Others

@@ -5,13 +5,14 @@ const {User} = require('../models/users');
 module.exports = (passport) => {
     passport.use(new localstrategy({usernameField: 'username', passwordField: 'password'}, async (username, password, done) =>{
         try {
-            const user = await User.findOne({wher: {username}});
-            if(!user) return done(null, false);
+            const user = await User.findOne({where: {username}});
+            
+            if(!user) return done(null, false, {message: 'Username doesn\'t exist.'});
 
             const equal = await bcrypt.compare(password, user.password);
 
             if(equal) done(null, user.get());
-            else done(null, false);
+            else done(null, false, {message: 'Incorrect password.'});
 
         } catch (error) {
             console.log('Error : ' + error);

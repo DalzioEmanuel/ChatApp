@@ -7,6 +7,11 @@
 <div class="card">
     <div class="card-body">
         <form action="/users/login" method="post">
+        {{#if messages.error}}
+            <div class="alert alert-danger">
+                {{messages.error}}
+            </div>
+        {{/if}}
             <label for="email">Username: </label>
                 <input type="text" name="username" id="" class="form-control" required>
             <label for="password">Password: </label>
