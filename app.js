@@ -55,8 +55,7 @@
         try {
             const currentUser = res.locals.user;
             const messages = await Messages.find();
-
-            console.log(messages)
+            
             res.render('index', {messages: messages, user: currentUser});
         } catch (error) {
             req.flash('msg_error', 'Theres was an error.');
